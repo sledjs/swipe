@@ -1,0 +1,25 @@
+{
+  "name": "@sled/swipe",
+  "version": "1.0.0",
+  "description": "swipe",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sledjs/touch.git"
+  },
+  "author": "Damian Martyniak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sledjs/touch/issues"
+  },
+  "homepage": "https://github.com/sledjs/touch#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0"
+  }
+}
