@@ -6,13 +6,27 @@ class Swipe {
     this.press = false;
   }
 
+  toggle(bool) {
+    bool = typeof bool == 'boolean'
+      ? bool
+      : this.press = !this.press;
+
+    this.press = bool;
+
+    return e => {
+      this.toggle(bool);
+
+      return false;
+    };
+  }
+
   init(core) {
     this.slides = core.modules.slides;
 
     core.$.addEventListener('mousemove', e => ::this.swipe(e.movementX));
-    core.$.addEventListener('mousedown', e => this.press = true);
-    core.$.addEventListener('mouseup', e => this.press = false);
-    core.$.addEventListener('mouseleave', e => this.press = false);
+    core.$.addEventListener('mousedown', this.toggle(true));
+    core.$.addEventListener('mouseup', this.toggle(false));
+    core.$.addEventListener('mouseleave', this.toggle(false));
   }
 
   swipe(movement) {
