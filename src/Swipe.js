@@ -3,6 +3,7 @@
 class Swipe {
   constructor() {
     this.drag = 10;
+    this.lastTouch = null;
     this.press = false;
   }
 
@@ -10,6 +11,7 @@ class Swipe {
     this.slides = core.modules.slides;
 
     this.bootstrapEvents(core.$, 'mousemove', 'mousedown', 'mouseup', 'mouseleave');
+    core.$.addEventListener('touchmove', ::this.touch);
   }
 
   bootstrapEvents($elem, move, down, ...up) {
@@ -17,6 +19,14 @@ class Swipe {
     $elem.addEventListener(down, this.toggle(true));
     up.forEach(event =>
       $elem.addEventListener(event, this.toggle(false)));
+  }
+
+  touch(e) {
+    e.preventDefault();
+    let touch = e.touches[0].clientX;
+
+    this.swipe(touch - this.lastTouch);
+    this.lastTouch = touch;
   }
 
   mouse(movement) {
