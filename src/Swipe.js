@@ -13,14 +13,18 @@ class Swipe {
   }
 
   bootstrapEvents($elem, move, down, ...up) {
-    $elem.addEventListener(move, e => ::this.swipe(e.movementX));
+    $elem.addEventListener(move, e => ::this.mouse(e.movementX));
     $elem.addEventListener(down, this.toggle(true));
     up.forEach(event =>
       $elem.addEventListener(event, this.toggle(false)));
   }
 
+  mouse(movement) {
+    if (this.press) this.swipe(movement);
+  }
+
   swipe(movement) {
-    if (this.press && Math.abs(movement) > this.drag)
+    if (Math.abs(movement) > this.drag)
       this.slides[movement < 0 ? 'next' : 'prev']();
   }
 
