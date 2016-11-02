@@ -2,7 +2,7 @@
 [Sled](https://github.com/sledjs/sled) module
 
 ## cdn
-[swipe.js](https://npmcdn.com/@sled/swipe/lib/swipe)
+[swipe.js](https://unpkg.com/@sled/swipe/lib/swipe)
 
 ## npm
 ```sh
